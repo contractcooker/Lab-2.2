@@ -18,8 +18,8 @@ namespace Lab2._2
             do
             {
 
-                Console.WriteLine(Math.Pow(int.MaxValue, .33333));
-                Console.WriteLine(int.MaxValue);
+                //Console.WriteLine(Math.Pow(int.MaxValue, .33333));
+                //Console.WriteLine(int.MaxValue);
                 //Request input
                 Console.Write("Please enter a positive integer: ");
 
