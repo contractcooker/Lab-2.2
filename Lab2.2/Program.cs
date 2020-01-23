@@ -12,15 +12,17 @@ namespace Lab2._2
             double square;
             double cube;
             bool repeat = true;
+            bool condition1 = true;
+            bool condition2 = true;
             //Welcome!
             Console.WriteLine("This program squares and cubes numbers");
-            
+
+            //Console.WriteLine(Math.Pow(int.MaxValue, .33333));
+            //Console.WriteLine(int.MaxValue);
+            //Request input
+
             do
             {
-
-                //Console.WriteLine(Math.Pow(int.MaxValue, .33333));
-                //Console.WriteLine(int.MaxValue);
-                //Request input
                 Console.Write("Please enter a positive integer: ");
 
                 //get input
@@ -29,25 +31,22 @@ namespace Lab2._2
                 //parse input
                 bool parseTrue = int.TryParse(input, out a);
 
+
+
                 //check that the input was in fact an integer and that it's > 0
 
-                while (!parseTrue || a <= 0)
+                while ((!parseTrue || a <= 0 || a > Math.Pow(int.MaxValue, .33333)))
                 {
-                    Console.WriteLine("That was not a positive integer");
+                    
+                    Console.WriteLine($"OUT OF BOUNDS OR NOT A POSITIVE INTEGER. " +
+                        $"Please select a number" +
+                        $"greater than 0 and less than" +
+                        $" {Math.Pow(int.MaxValue, .33333)}");
                     Console.Write("Please try again: ");
                     input = Console.ReadLine();
-                    parseTrue = int.TryParse(input, out a);
-                }
-                //check in bounds
-                while (a > Math.Pow(int.MaxValue, .33333))
-                {
-                    Console.WriteLine($"OUT OF BOUNDS. Please select a number" +
-                        $"less than {Math.Pow(int.MaxValue, .33333)}");
-                    Console.Write("Please try again: ");
-                    input = Console.ReadLine();
-                    parseTrue = int.TryParse(input, out a);
-                }
-
+                    parseTrue = int.TryParse(input, out a);                   
+                  
+                }  
                 //generate the header
                 Console.WriteLine("Number\t\tSquared\t\tCubed");
                 Console.WriteLine("======\t\t=======\t\t=====");
@@ -68,15 +67,15 @@ namespace Lab2._2
                 //validate input
                 parseTrue = char.TryParse(input, out prompt);
                 prompt = char.ToUpper(prompt);
-                while (!parseTrue && prompt != 'Y' && prompt != 'N')
+                while (parseTrue && prompt != 'Y' && prompt != 'N')
                 {
-                        Console.WriteLine("Please answer using 'y' or 'n'.");
-                        Console.Write("Please try again: ");
-                        input = Console.ReadLine();
-                        parseTrue = char.TryParse(input, out prompt);
-                        prompt = char.ToUpper(prompt);
-                        Console.WriteLine(prompt);
-                    
+                    Console.WriteLine("Please answer using 'y' or 'n'.");
+                    Console.Write("Please try again: ");
+                    input = Console.ReadLine();
+                    parseTrue = char.TryParse(input, out prompt);
+                    prompt = char.ToUpper(prompt);
+                    Console.WriteLine(prompt);
+
                 }
                 if (prompt == 'Y')
                 {
@@ -86,12 +85,12 @@ namespace Lab2._2
                 {
                     repeat = false;
                 }
-                
-                    
-                
-                
+                else
+                {
+                    repeat = false;
+                }
 
-            } while (repeat);
+            } while (repeat) ;
         }
     }
 }
